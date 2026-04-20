@@ -13,6 +13,23 @@ Session behavior
 
 The system is isolated and prevents real damage while providing deep insights into attacker tactics.
 
+## 🤖 AI-Based Anomaly Detection
+
+This project includes a machine learning model (MLP - Neural Network) to analyze attacker behavior.
+
+- Extracts features from honeypot session logs
+- Uses a trained neural network (scikit-learn MLP)
+- Generates:
+  - Anomaly Score
+  - Classification (Normal / Suspicious)
+
+### Example Output
+
+IP: 127.0.0.1  
+Features: [1, 8, 5.34]  
+Anomaly Score: 20.56  
+Status: Suspicious
+
 ⚙️ Tech Stack
 Cowrie Honeypot
 Python 3.13
