@@ -1,5 +1,6 @@
 🛡️ AI Honeypot (Cowrie-Based SSH Honeypot)
 
+<<<<<<< HEAD
 ## ⚠️ Important Note
 
 This project requires Cowrie to be installed and running with JSON logging enabled.
@@ -14,6 +15,8 @@ Make sure to enable JSON logging in Cowrie:
 enabled = true
 logfile = var/log/cowrie/cowrie.json
 
+=======
+>>>>>>> c50e0df (Initial commit: AI honeypot system)
 A realistic SSH honeypot built using Cowrie, designed to simulate vulnerable systems, capture attacker behavior, and analyze intrusion patterns safely.
 
 📌 Overview

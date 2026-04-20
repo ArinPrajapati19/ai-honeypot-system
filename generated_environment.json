@@ -1,0 +1,407 @@
+{
+  "os": {
+    "os_name": "Ubuntu",
+    "os_version": "24.04.1 LTS",
+    "hostname": "dev-mail-43",
+    "kernel": "5.18.56-generic",
+    "architecture": "x86_64",
+    "uptime_days": 213,
+    "ip_address": "10.44.159.247",
+    "mac_address": "b6:1e:1e:9b:be:8f"
+  },
+  "services": [
+    {
+      "port": 111,
+      "protocol": "tcp",
+      "service": "rpcbind",
+      "version": "0.2.3",
+      "state": "listening"
+    },
+    {
+      "port": 2049,
+      "protocol": "tcp",
+      "service": "NFS",
+      "version": "4.1",
+      "state": "active"
+    },
+    {
+      "port": 5432,
+      "protocol": "tcp",
+      "service": "PostgreSQL",
+      "version": "16.1",
+      "state": "listening"
+    },
+    {
+      "port": 6379,
+      "protocol": "tcp",
+      "service": "Redis",
+      "version": "7.2.3",
+      "state": "running"
+    },
+    {
+      "port": 27017,
+      "protocol": "tcp",
+      "service": "MongoDB",
+      "version": "6.0.12",
+      "state": "listening"
+    }
+  ],
+  "users": [
+    {
+      "username": "root",
+      "uid": 0,
+      "privilege": "superuser",
+      "shell": "/bin/bash"
+    },
+    {
+      "username": "admin",
+      "uid": 1000,
+      "privilege": "admin",
+      "shell": "/bin/bash"
+    },
+    {
+      "username": "centos",
+      "uid": 1001,
+      "privilege": "service",
+      "shell": "/usr/sbin/nologin",
+      "home": "/home/centos",
+      "last_login": "2026-03-28T11:56:06"
+    },
+    {
+      "username": "testuser",
+      "uid": 1002,
+      "privilege": "standard",
+      "shell": "/bin/bash",
+      "home": "/home/testuser",
+      "last_login": "2026-04-11T10:13:28"
+    },
+    {
+      "username": "webadmin",
+      "uid": 1003,
+      "privilege": "service",
+      "shell": "/usr/sbin/nologin",
+      "home": "/home/webadmin",
+      "last_login": "2026-03-21T07:17:32"
+    },
+    {
+      "username": "backup",
+      "uid": 1004,
+      "privilege": "standard",
+      "shell": "/bin/bash",
+      "home": "/home/backup",
+      "last_login": "2026-03-26T13:45:56"
+    }
+  ],
+  "filesystem": {
+    "/etc": [
+      {
+        "name": "passwd",
+        "size_bytes": 2495918,
+        "modified": "2026-02-19T16:04:39",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "shadow",
+        "size_bytes": 4568230,
+        "modified": "2026-03-07T02:27:01",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "hosts",
+        "size_bytes": 58766,
+        "modified": "2026-03-31T09:45:55",
+        "permissions": "-rwxr-xr-x"
+      },
+      {
+        "name": "resolv.conf",
+        "size_bytes": 2548196,
+        "modified": "2026-02-28T20:30:26",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "ssh/sshd_config",
+        "size_bytes": 1596201,
+        "modified": "2026-02-28T14:03:53",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "nginx/nginx.conf",
+        "size_bytes": 4396846,
+        "modified": "2026-03-16T21:30:00",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "crontab",
+        "size_bytes": 1539663,
+        "modified": "2026-03-25T04:25:36",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "fstab",
+        "size_bytes": 3800809,
+        "modified": "2026-03-14T14:21:26",
+        "permissions": "-rw-------"
+      }
+    ],
+    "/home/admin": [
+      {
+        "name": ".bash_history",
+        "size_bytes": 2482430,
+        "modified": "2026-03-05T01:41:34",
+        "permissions": "-rw-rw-r--"
+      },
+      {
+        "name": ".ssh/authorized_keys",
+        "size_bytes": 2222116,
+        "modified": "2026-02-28T02:15:18",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "notes.txt",
+        "size_bytes": 1366352,
+        "modified": "2026-04-19T02:12:18",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "config.yaml",
+        "size_bytes": 1298213,
+        "modified": "2026-02-19T00:41:37",
+        "permissions": "-rwxr-xr-x"
+      }
+    ],
+    "/var/log": [
+      {
+        "name": "syslog",
+        "size_bytes": 3668920,
+        "modified": "2026-04-19T17:19:11",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "auth.log",
+        "size_bytes": 297762,
+        "modified": "2026-03-11T11:28:15",
+        "permissions": "-rwxr-xr-x"
+      },
+      {
+        "name": "kern.log",
+        "size_bytes": 371502,
+        "modified": "2026-04-16T16:20:44",
+        "permissions": "-rwxr-xr-x"
+      },
+      {
+        "name": "nginx/access.log",
+        "size_bytes": 1860675,
+        "modified": "2026-02-27T10:18:55",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "nginx/error.log",
+        "size_bytes": 976451,
+        "modified": "2026-04-13T19:20:48",
+        "permissions": "-rwxr-xr-x"
+      },
+      {
+        "name": "mysql/error.log",
+        "size_bytes": 4763144,
+        "modified": "2026-03-22T19:00:44",
+        "permissions": "-rw-rw-r--"
+      },
+      {
+        "name": "cron.log",
+        "size_bytes": 4009408,
+        "modified": "2026-03-26T18:52:19",
+        "permissions": "-rwxr-xr-x"
+      }
+    ],
+    "/tmp": [
+      {
+        "name": "backup.sql",
+        "size_bytes": 2761109,
+        "modified": "2026-03-24T04:10:04",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "deploy_20240301.tar.gz",
+        "size_bytes": 2451948,
+        "modified": "2026-03-29T05:07:05",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "passwords.txt",
+        "size_bytes": 2462083,
+        "modified": "2026-03-11T04:55:20",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "session_token.tmp",
+        "size_bytes": 3544312,
+        "modified": "2026-04-15T12:50:14",
+        "permissions": "-rw-r--r--"
+      }
+    ],
+    "/opt": [
+      {
+        "name": "app/server.jar",
+        "size_bytes": 362982,
+        "modified": "2026-04-17T11:09:19",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "app/config.yaml",
+        "size_bytes": 2687189,
+        "modified": "2026-03-01T04:46:17",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "scripts/cleanup.sh",
+        "size_bytes": 1368409,
+        "modified": "2026-04-09T19:29:35",
+        "permissions": "-rw-r--r--"
+      }
+    ],
+    "/var/www/html": [
+      {
+        "name": "index.html",
+        "size_bytes": 365429,
+        "modified": "2026-03-25T01:37:31",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": "login.php",
+        "size_bytes": 3382677,
+        "modified": "2026-03-19T19:01:27",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": ".env",
+        "size_bytes": 1743961,
+        "modified": "2026-04-16T21:21:32",
+        "permissions": "-rw-r--r--"
+      },
+      {
+        "name": "uploads/.htaccess",
+        "size_bytes": 1299190,
+        "modified": "2026-03-31T08:46:40",
+        "permissions": "-rw-------"
+      }
+    ],
+    "/root": [
+      {
+        "name": ".bash_history",
+        "size_bytes": 3313148,
+        "modified": "2026-04-02T08:37:07",
+        "permissions": "-rw-------"
+      },
+      {
+        "name": ".ssh/id_rsa",
+        "size_bytes": 1694683,
+        "modified": "2026-04-07T20:35:42",
+        "permissions": "-rw-rw-r--"
+      },
+      {
+        "name": ".ssh/id_rsa.pub",
+        "size_bytes": 2984727,
+        "modified": "2026-03-25T00:47:22",
+        "permissions": "-rwxr-xr-x"
+      },
+      {
+        "name": "emergency_access.key",
+        "size_bytes": 4606187,
+        "modified": "2026-03-05T18:07:04",
+        "permissions": "-rwxr-xr-x"
+      }
+    ]
+  },
+  "logs": [
+    {
+      "type": "application",
+      "timestamp": "2026-04-13T11:04:58",
+      "message": "192.183.84.207 - - \"HEAD /api/v1/users HTTP/1.1\" 404 9400"
+    },
+    {
+      "type": "ssh",
+      "timestamp": "2026-04-13T18:05:46",
+      "message": "Failed password for guest from 192.169.138.138 port 42035 ssh2"
+    },
+    {
+      "type": "ssh",
+      "timestamp": "2026-04-14T17:40:34",
+      "message": "Failed password for guest from 192.74.22.145 port 56525 ssh2"
+    },
+    {
+      "type": "ssh",
+      "timestamp": "2026-04-14T18:25:38",
+      "message": "Failed password for guest from 10.3.204.37 port 57908 ssh2"
+    },
+    {
+      "type": "ssh",
+      "timestamp": "2026-04-15T04:50:29",
+      "message": "Accepted password for guest from 10.37.19.149 port 59255 ssh2"
+    },
+    {
+      "type": "system",
+      "timestamp": "2026-04-15T10:24:20",
+      "message": "kernel: [UFW BLOCK] IN=eth0 OUT= SRC=10.77.232.231 DST=10.121.199.104 PROTO=TCP DPT=3306"
+    },
+    {
+      "type": "system",
+      "timestamp": "2026-04-15T16:43:39",
+      "message": "systemd[1]: Started Session 9983 of user root."
+    },
+    {
+      "type": "system",
+      "timestamp": "2026-04-16T08:45:46",
+      "message": "dhclient: DHCPREQUEST on eth0 to 192.253.201.26 port 67"
+    },
+    {
+      "type": "ssh",
+      "timestamp": "2026-04-16T20:37:52",
+      "message": "Failed password for postgres from 10.83.2.49 port 62346 ssh2"
+    },
+    {
+      "type": "system",
+      "timestamp": "2026-04-17T00:50:50",
+      "message": "systemd[1]: Reloading nginx.service."
+    },
+    {
+      "type": "system",
+      "timestamp": "2026-04-17T04:51:43",
+      "message": "systemd-logind[56003]: New session 4934 of user deploy."
+    },
+    {
+      "type": "application",
+      "timestamp": "2026-04-17T07:53:28",
+      "message": "172.137.109.196 - - \"DELETE /robots.txt HTTP/1.1\" 200 42487"
+    },
+    {
+      "type": "application",
+      "timestamp": "2026-04-18T21:50:19",
+      "message": "172.162.93.183 - - \"PUT /.env HTTP/1.1\" 200 19319"
+    },
+    {
+      "type": "application",
+      "timestamp": "2026-04-19T08:22:48",
+      "message": "10.7.95.161 - - \"DELETE /api/health HTTP/1.1\" 404 2949"
+    },
+    {
+      "type": "ssh",
+      "timestamp": "2026-04-19T11:11:31",
+      "message": "Failed password for test from 10.214.17.107 port 61527 ssh2"
+    },
+    {
+      "type": "application",
+      "timestamp": "2026-04-19T14:34:50",
+      "message": "172.252.61.65 - - \"HEAD /login HTTP/1.1\" 500 10280"
+    },
+    {
+      "type": "application",
+      "timestamp": "2026-04-19T16:12:25",
+      "message": "192.137.103.72 - - \"HEAD /api/v1/users HTTP/1.1\" 404 27538"
+    },
+    {
+      "type": "system",
+      "timestamp": "2026-04-20T07:08:32",
+      "message": "systemd-logind[6758]: New session 1128 of user admin."
+    }
+  ]
+}
